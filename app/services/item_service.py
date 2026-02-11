@@ -58,9 +58,7 @@ def update_item_price(db: Session, item_id: str, price: int) -> None:
     item = get_item_by_id(db, item_id)
     if not item:
         raise ValueError("item_not_found")
-    prev_updated = item.updated_at
     item.price = price
-    item.updated_at = prev_updated
     db.commit()
 
 
